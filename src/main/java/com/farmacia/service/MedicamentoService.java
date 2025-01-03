@@ -14,6 +14,14 @@ public class MedicamentoService {
     @Autowired
     private MedicamentoRepository repository;
 
+    private void validarMedicamento(Medicamento medicamento) {
+        if (medicamento.getNome().isBlank()) {
+            throw new RuntimeException("Nome inválido");
+        } else if (medicamento.getDosagem().isBlank()) {
+            throw new RuntimeException("Dosagem inválida");
+        }
+    }
+
     public List<Medicamento> getAll() {
         List<Medicamento> medicamentos = repository.findAll();
 
@@ -31,28 +39,21 @@ public class MedicamentoService {
 
     @Transactional
     public Medicamento post(Medicamento medicamento) {
-        if (medicamento.getNome().isEmpty()) {
-            throw new RuntimeException("Nome inválido");
-        } else if (medicamento.getDosagem().isEmpty()) {
-            throw new RuntimeException("Dosagem inválida");
-        }
+        validarMedicamento(medicamento);
 
         return repository.save(medicamento);
     }
 
     @Transactional
-    public Medicamento put(Medicamento medicamento) {
-        Optional<Medicamento> medicamentoOpt = repository.findById(medicamento.getId());
+    public Medicamento put(Long id, Medicamento medicamento) {
+        Medicamento medicamentoEncontrado = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Medicamento não encontrado"));
+        validarMedicamento(medicamento);
 
-        if (medicamentoOpt.isEmpty()) {
-            throw new RuntimeException("Medicamento não encontrado");
-        } else if (medicamento.getNome().isEmpty()) {
-            throw new RuntimeException("Nome inválido");
-        } else if (medicamento.getDosagem().isEmpty()) {
-            throw new RuntimeException("Dosagem inválida");
-        }
+        medicamentoEncontrado.setNome(medicamento.getNome());
+        medicamentoEncontrado.setDosagem(medicamento.getDosagem());
 
-        return repository.save(medicamento);
+        return repository.save(medicamentoEncontrado);
     }
 
     @Transactional

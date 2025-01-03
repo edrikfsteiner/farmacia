@@ -1,0 +1,10 @@
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/FarmaciaApplication.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/config/OpenAPIConfig.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/controller/MedicamentoController.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/controller/ReceitaController.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/model/Medicamento.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/model/Receita.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/repository/MedicamentoRepository.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/repository/ReceitaRepository.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/service/MedicamentoService.java
+/home/edrik.steiner/Área de Trabalho/farmacia/src/main/java/com/farmacia/service/ReceitaService.java
